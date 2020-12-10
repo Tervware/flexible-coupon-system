@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/coupon/{code}', [\App\Http\Controllers\CouponController::class, 'show']);
