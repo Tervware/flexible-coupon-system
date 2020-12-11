@@ -23,18 +23,23 @@
 
     <li class="list-group-item">
       <strong>Total:</strong>
+      <span v-if="currentCoupon.discountAmount > 0">
       <strong> {{total - currentCoupon.discountAmount | formatMoney}}</strong>
+      </span>
+         <span v-else>
+      <strong> {{total  | formatMoney}}</strong>
+      </span>
     </li>
       <div v-if="itemsQuantity > 0" class="input-group my-3">
           <input type="text" class="form-control" v-model="coupon" placeholder="Enter the Coupon"  required>
           <div class="input-group-append">
               <button class="btn btn-outline-info" type="submit"  v-on:click="checkCoupon()">Apply </button>
           </div>
-          <br>
+      </div>
+
+
           <span v-if="currentCoupon.rulePassed" class="text-success"> Coupon Applied </span>
           <span v-if="currentCoupon.failedRule" class="text-danger"> Coupon invalid/not Applicable </span>
-<!--              {{ currentCoupon}}-->
-      </div>
   </ul>
 </template>
 
@@ -70,6 +75,8 @@ export default {
   },
     methods: {
       checkCoupon () {
+          this.currentCoupon.rulePassed = false;
+          this.currentCoupon.failedRule = false;
        this.$store.dispatch("getCoupon", {coupon: this.coupon, numberOfItems: this.itemsQuantity, totalAmount: this.total});
     }
     }
