@@ -26,6 +26,16 @@
        
       $ php artisan serve
       
-      Now you can visit http://localhost:8000 in your browser to see the coupon system  
-            
      
+  Now you can visit http://localhost:8000 in your browser to see the coupon system as displayed in the image below:  
+   
+   
+![Coupon system](public/images/coupon.png)        
+    
+   You can test with the following default coupons:
+    
+    FIXED10
+    PERCENT10
+    MIXED10
+    REJECTED10
+
