@@ -17,9 +17,9 @@ class CouponController extends Controller
      */
     public function show($code)
     {
-        $coup = Coupon::firstWhere('code', $code);
+        $coupon = Coupon::firstWhere('code', $code);
 
-        if(!isset($coup)){
+        if(!isset($coupon)){
             return response()->json([
                 'status' => 'error',
                 'message' => 'Not Found',
@@ -27,7 +27,7 @@ class CouponController extends Controller
         }
         return response()->json([
                 'status' => 'success',
-                'data' => $coup,
+                'data' => $coupon,
             ]);
 
     }
