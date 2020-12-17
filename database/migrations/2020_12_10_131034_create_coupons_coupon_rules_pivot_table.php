@@ -18,7 +18,8 @@ class CreateCouponsCouponRulesPivotTable extends Migration
             $table->foreignId('coupon_id')->constrained('coupons');
             $table->foreignId('rule_id')->constrained('coupon_rules');
             $table->decimal('rule_value')->nullable($value = false)->unique();
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 

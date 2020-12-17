@@ -18,7 +18,8 @@ class CreateCouponsCouponDiscountTypesPivotTable extends Migration
             $table->foreignId('coupon_id')->constrained('coupons');
             $table->foreignId('discount_type_id')->constrained('coupon_discount_types');
             $table->decimal('discount_value')->nullable($value = false);
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
